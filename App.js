@@ -4,7 +4,7 @@ import PostList from "./src/components/PostList";
 
 const App = () => {
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "lightgrey" }}>
       <PostList />
     </SafeAreaView>
   );
