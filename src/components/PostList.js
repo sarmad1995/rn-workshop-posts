@@ -41,6 +41,12 @@ const PostList = () => {
       : list.current;
   }, [state]);
 
+  const renderItem = useCallback(
+    ({ item }) => {
+      return <ListTile key={item.id} title={item.title} body={item.body} />;
+    },
+    [state]
+  );
   if (state.loading === true) {
     return (
       <View style={styles.loadingContainer}>
@@ -49,9 +55,6 @@ const PostList = () => {
     );
   }
 
-  const renderItem = ({ item }) => {
-    return <ListTile key={item.id} title={item.title} body={item.body} />;
-  };
   return (
     <View style={styles.fill}>
       <TextInput
