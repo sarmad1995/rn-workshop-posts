@@ -1,11 +1,11 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-const ListTile = () => {
+const ListTile = (props) => {
   return (
     <View style={styles.listTileContainer}>
-      <Text>Title</Text>
-      <Text>Body</Text>
+      <Text>{props.title}</Text>
+      <Text>{props.body}</Text>
     </View>
   );
 };
