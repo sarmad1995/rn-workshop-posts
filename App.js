@@ -1,20 +1,24 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { View, StyleSheet } from "react-native";
 import axios from "axios";
 import ListTile from "./src/components/ListTile";
 
 const App = () => {
+  const [value, setValue] = useState([]);
+
   useEffect(() => {
+    // My component did mount for the first time.
     axios.get("https://jsonplaceholder.typicode.com/posts").then((response) => {
-      console.log(response);
+      setValue(response.data);
     });
   }, []);
+
+  console.log(`Length is ${value.length}`);
   return (
     <View style={styles.container}>
-      <ListTile title="ABC" body="I am body" />
-      <ListTile title="DEF" body="I am body" />
-      <ListTile title="Random" body="I am body" />
-      <ListTile title="1111" body="I am body" />
+      {value.map((post) => {
+        return <ListTile key={post.id} title={post.title} body={post.body} />;
+      })}
     </View>
   );
 };
