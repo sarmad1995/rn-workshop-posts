@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { ActivityIndicator, View, ScrollView, StyleSheet } from "react-native";
+import {
+  ActivityIndicator,
+  View,
+  ScrollView,
+  StyleSheet,
+  TextInput,
+} from "react-native";
 import axios from "axios";
 import ListTile from "./ListTile";
 
@@ -12,6 +18,7 @@ const PostList = () => {
       setState({ list: response.data, loading: false });
     });
   }, []);
+
   if (state.loading === true) {
     return (
       <View style={styles.loadingContainer}>
@@ -21,14 +28,30 @@ const PostList = () => {
   }
   console.log(`Length is ${state.list.length}`);
   return (
-    <ScrollView style={styles.container}>
-      {state.list.map((post) => {
-        return <ListTile key={post.id} title={post.title} body={post.body} />;
-      })}
-    </ScrollView>
+    <View style={styles.fill}>
+      <TextInput placeholder="Search..." style={styles.textInput} />
+      <ScrollView style={styles.container}>
+        {state.list.map((post) => {
+          return <ListTile key={post.id} title={post.title} body={post.body} />;
+        })}
+      </ScrollView>
+    </View>
   );
 };
 const styles = StyleSheet.create({
+  fill: {
+    flex: 1,
+    backgroundColor: "lightgrey",
+  },
+  textInput: {
+    marginTop: 30,
+    width: "80%",
+    backgroundColor: "white",
+    height: 50,
+    alignSelf: "center",
+    borderRadius: 5,
+    paddingHorizontal: 20,
+  },
   container: {
     flex: 1,
     backgroundColor: "lightgrey",
