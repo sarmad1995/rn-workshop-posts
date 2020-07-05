@@ -1,8 +1,12 @@
-import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import React, { useEffect } from "react";
+import { View, StyleSheet } from "react-native";
+import axios from "axios";
 import ListTile from "./src/components/ListTile";
 
 const App = () => {
+  useEffect(() => {
+    console.log("mounted");
+  }, []);
   return (
     <View style={styles.container}>
       <ListTile title="ABC" body="I am body" />
