@@ -1,22 +1,13 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
+import ListTile from "./src/components/ListTile";
 
 const App = () => {
   return (
     <View>
-      <View style={styles.listTileContainer}>
-        <Text>Title</Text>
-        <Text>Body</Text>
-      </View>
+      <ListTile />
     </View>
   );
 };
 
-const styles = StyleSheet.create({
-  listTileContainer: {
-    backgroundColor: "red",
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-  },
-});
 export default App;
