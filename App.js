@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, StyleSheet } from "react-native";
+import { ScrollView, StyleSheet } from "react-native";
 import axios from "axios";
 import ListTile from "./src/components/ListTile";
 
@@ -15,11 +15,11 @@ const App = () => {
 
   console.log(`Length is ${value.length}`);
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       {value.map((post) => {
         return <ListTile key={post.id} title={post.title} body={post.body} />;
       })}
-    </View>
+    </ScrollView>
   );
 };
 
