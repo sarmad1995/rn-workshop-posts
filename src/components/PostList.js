@@ -47,6 +47,7 @@ const PostList = () => {
     },
     [state]
   );
+
   if (state.loading === true) {
     return (
       <View style={styles.loadingContainer}>
@@ -74,7 +75,7 @@ const styles = StyleSheet.create({
     backgroundColor: "lightgrey",
   },
   textInput: {
-    marginTop: 30,
+    marginTop: 40,
     marginBottom: 30,
     width: "90%",
     backgroundColor: "white",
