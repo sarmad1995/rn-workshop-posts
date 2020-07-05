@@ -5,7 +5,9 @@ import ListTile from "./src/components/ListTile";
 
 const App = () => {
   useEffect(() => {
-    console.log("mounted");
+    axios.get("https://jsonplaceholder.typicode.com/posts").then((response) => {
+      console.log(response);
+    });
   }, []);
   return (
     <View style={styles.container}>
