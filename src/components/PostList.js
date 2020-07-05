@@ -1,23 +1,45 @@
-import React, { useState, useEffect } from "react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  useMemo,
+} from "react";
 import {
   ActivityIndicator,
   View,
   ScrollView,
   StyleSheet,
+  FlatList,
   TextInput,
 } from "react-native";
 import axios from "axios";
 import ListTile from "./ListTile";
 
 const PostList = () => {
-  const [state, setState] = useState({ list: [], loading: true });
+  const [state, setState] = useState({ query: "", loading: true });
+  const list = useRef([]);
 
   useEffect(() => {
     // My component did mount for the first time.
     axios.get("https://jsonplaceholder.typicode.com/posts").then((response) => {
-      setState({ list: response.data, loading: false });
+      list.current = response.data;
+      setState({ ...state, loading: false });
     });
   }, []);
+
+  const handleChange = useCallback(
+    (query) => {
+      setState({ ...state, query });
+    },
+    [state]
+  );
+
+  const listToBeRendered = useMemo(() => {
+    return state.query
+      ? list.current.filter((post) => post.title.includes(state.query))
+      : list.current;
+  }, [state]);
 
   if (state.loading === true) {
     return (
@@ -26,15 +48,20 @@ const PostList = () => {
       </View>
     );
   }
-  console.log(`Length is ${state.list.length}`);
+
+  const renderItem = ({ item }) => {
+    return <ListTile key={item.id} title={item.title} body={item.body} />;
+  };
   return (
     <View style={styles.fill}>
-      <TextInput placeholder="Search..." style={styles.textInput} />
-      <ScrollView style={styles.container}>
-        {state.list.map((post) => {
-          return <ListTile key={post.id} title={post.title} body={post.body} />;
-        })}
-      </ScrollView>
+      <TextInput
+        onChangeText={handleChange}
+        autoCorrect={false}
+        autoCapitalize={false}
+        placeholder="Search..."
+        style={styles.textInput}
+      />
+      <FlatList data={listToBeRendered} renderItem={renderItem} />
     </View>
   );
 };
