@@ -4,7 +4,7 @@ import ListTile from "./src/components/ListTile";
 
 const App = () => {
   return (
-    <View>
+    <View style={styles.container}>
       <ListTile title="ABC" body="I am body" />
       <ListTile title="DEF" body="I am body" />
       <ListTile title="Random" body="I am body" />
@@ -12,5 +12,12 @@ const App = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "lightgrey",
+  },
+});
 
 export default App;
