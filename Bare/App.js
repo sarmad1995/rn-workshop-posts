@@ -1,11 +1,13 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useEffect } from "react";
+import Config from "react-native-config";
 import { Alert } from "react-native";
 import { StyleSheet, Text, View } from "react-native";
 
+console.log(process.env);
 export default function App() {
   useEffect(() => {
-    Alert.alert(process.env.APP_NAME);
+    Alert.alert(Config.APP_NAME);
   }, []);
   return (
     <View style={styles.container}>

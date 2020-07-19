@@ -61,3 +61,5 @@ buck-out/
 # Expo
 .expo/*
 web-build/
+# react-native-config codegen
+ios/tmp.xcconfig
