@@ -5,11 +5,14 @@ import React, {
   useCallback,
   useMemo,
 } from "react";
+import Constants from "expo-constants";
+
 import {
   ActivityIndicator,
   View,
   ScrollView,
   StyleSheet,
+  Alert,
   FlatList,
   TextInput,
 } from "react-native";
@@ -26,6 +29,10 @@ const PostList = () => {
       list.current = response.data;
       setState({ ...state, loading: false });
     });
+
+    setTimeout(() => {
+      Alert.alert(Constants.manifest.releaseChannel);
+    }, 3000);
   }, []);
 
   const handleChange = useCallback(
@@ -62,7 +69,7 @@ const PostList = () => {
         onChangeText={handleChange}
         autoCorrect={false}
         autoCapitalize="none"
-        placeholder="Search Input..."
+        placeholder="Search..."
         style={styles.textInput}
       />
       <FlatList
