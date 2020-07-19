@@ -55,17 +55,21 @@ const PostList = () => {
       </View>
     );
   }
-
+  const handleKeyExtractor = (_, i) => i.toString();
   return (
     <View style={styles.fill}>
       <TextInput
         onChangeText={handleChange}
         autoCorrect={false}
-        autoCapitalize={false}
-        placeholder="Search..."
+        autoCapitalize="none"
+        placeholder="Search Input..."
         style={styles.textInput}
       />
-      <FlatList data={listToBeRendered} renderItem={renderItem} />
+      <FlatList
+        keyExtractor={handleKeyExtractor}
+        data={listToBeRendered}
+        renderItem={renderItem}
+      />
     </View>
   );
 };
