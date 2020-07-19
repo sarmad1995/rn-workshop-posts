@@ -1,4 +1,4 @@
 export default {
-    API_ENDPOINT = "https://jsonplaceholder.typicode.com",
-    TARGET_NAME='DEV'
-}
+  API_ENDPOINT: "https://jsonplaceholder.typicode.com",
+  TARGET_NAME: "DEV",
+};
