@@ -15,7 +15,12 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.crownstack.rn.workshop"
+    },
+    "android": {
+      "package": "com.crownstack.workshop",
+      "versionCode": 1
     },
     "web": {
       "favicon": "./assets/favicon.png"
