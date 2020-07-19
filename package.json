@@ -5,7 +5,9 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "release:dev": "cp app.dev.json app.json && expo publish",
+    "release:qa": "cp app.qa.json app.json && expo publish --release-channel qa"
   },
   "dependencies": {
     "axios": "^0.19.2",
